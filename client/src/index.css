@@ -1,0 +1,134 @@
+/* Base Styles */
+body {
+  font-family: "Arial", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.6;
+  color: #24292e;
+}
+
+/* Utility Classes */
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #586069;
+}
+
+/* Link Styles */
+a {
+  color: #0366d6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+a.external {
+  color: white;
+  background: #28a745;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+a.external:hover {
+  background: #22863a;
+  text-decoration: none;
+}
+
+/* User Profile Styles */
+.user-profile {
+  margin-top: 2rem;
+}
+
+.user-profile img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #e1e4e8;
+}
+
+.user-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 1rem;
+}
+
+.user-list a {
+  display: block;
+  padding: 0.5rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+}
+
+/* Repository Styles */
+.repo-details {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background: #f6f8fa;
+}
+
+.repo-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  color: #586069;
+  flex-wrap: wrap;
+}
+
+.repo-dates {
+  margin: 1rem 0;
+  color: #586069;
+  font-size: 0.9rem;
+}
+
+/* Commit History Styles */
+.commit-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.commit-list li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.commit-message {
+  font-weight: 500;
+  margin: 0.2rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commit-author,
+.commit-date {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: #586069;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .repo-meta {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .user-profile img {
+    width: 80px;
+    height: 80px;
+  }
+}

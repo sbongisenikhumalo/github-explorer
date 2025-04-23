@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserSearch Component matches snapshot 1`] = `
+<DocumentFragment>
+  <form>
+    <input
+      placeholder="Search GitHub users"
+      type="text"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;

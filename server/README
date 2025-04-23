@@ -1,0 +1,60 @@
+# GitHub Explorer
+
+A full-stack React and Express application for exploring GitHub profiles and repositories.
+
+## Features
+
+- Search GitHub users
+- View user profiles with:
+  - Avatar image
+  - Bio information
+  - Top 5 repositories
+- View repository details including:
+  - Creation date
+  - Last update
+  - Recent commits
+
+## Technologies
+
+- Frontend: React.js
+- Backend: Express.js
+- GitHub API
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/github-explorer.git
+```
+
+2. Install dependencies for both frontend and backend:
+
+```bash
+cd github-explorer
+npm install
+cd client
+npm install
+cd ../server
+npm install
+```
+
+3. Run the application:
+
+```bash
+cd ..
+npm run dev
+```
+
+## Testing
+
+Run all tests:
+
+```bash
+npm test
+```
+
+## Environment
+
+- Node.js v16+
+- npm v8+
