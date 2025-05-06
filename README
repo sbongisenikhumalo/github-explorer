@@ -1,0 +1,54 @@
+# GitHub Explorer - Capstone Project
+
+A full-stack MERN (React + Express) web application that lets users search for GitHub profiles, view user details, and explore repository data — including the last 5 commits for each repo. All GitHub API interactions are securely handled on the backend.
+
+## Features
+
+- **GitHub User Search** with live results
+- **User Profile Viewer** with avatar, bio, and repositories
+- **Repository Detail Pages** with metadata and recent commits
+- **Backend Integration with GitHub API**
+- **Secure Express Server** using Helmet
+- **Responsive React UI** with loading indicators
+- **Unit & Snapshot Testing** with Jest and React Testing Library
+
+## Built With
+
+- **Frontend**: React (Hooks, JSX, CSS)
+- **Backend**: Node.js + Express
+- **API**: GitHub REST v3
+- **Testing**: Jest, React Testing Library
+- **Security**: Helmet.js
+
+## Folder Structure
+
+```
+client/     → React frontend
+server/     → Express backend + GitHub API routes
+```
+
+## How to Run
+
+```bash
+# Start backend
+cd server
+npm install
+npm start
+
+# Start frontend
+cd ../client
+npm install
+npm start
+```
+
+## Run Tests
+
+```bash
+# Frontend tests (React)
+cd client
+npm test
+
+# Backend tests (Express)
+cd ../server
+npm test
+```

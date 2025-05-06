@@ -1,79 +1,46 @@
-// This component fetches details of a specific repository
-// including metadata and the last 5 commits.
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import Loading from "./Loading";
 
-const RepoDetails = ({ username, repoName }) => {
-  const [repo, setRepo] = useState(null);
+const RepoDetails = () => {
+  const { username, repoName } = useParams();
   const [commits, setCommits] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchRepoData = async () => {
+    const fetchCommits = async () => {
       try {
-        // Fetch repo data and commit history
-        const [repoRes, commitsRes] = await Promise.all([
-          axios.get(`/api/repos/${username}/${repoName}`),
-          axios.get(`/api/repos/${username}/${repoName}/commits?per_page=5`),
-        ]);
-        setRepo(repoRes.data.repo);
-        setCommits(commitsRes.data);
-      } catch (err) {
-        console.error("Error fetching repo data:", err);
+        const response = await axios.get(
+          `https://api.github.com/repos/${username}/${repoName}/commits?per_page=5`
+        );
+        setCommits(response.data);
+      } catch (error) {
+        console.error("Error fetching commits:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchRepoData();
+    fetchCommits();
   }, [username, repoName]);
 
-  if (loading) return <Loading />;
-  if (!repo) return <div>Repository not found</div>;
+  if (loading) return <p>Loading commits...</p>;
+  if (!commits.length) return <p>No commits found.</p>;
 
   return (
     <div className="repo-details">
-      <h2>{repo.name}</h2>
-      <p>{repo.description || "No description provided"}</p>
-
-      <div className="repo-meta">
-        <span>⭐ Stars: {repo.stargazers_count}</span>
-        <span>👀 Watchers: {repo.watchers_count}</span>
-        <span>🍴 Forks: {repo.forks_count}</span>
-      </div>
-
-      <div className="repo-dates">
-        <p>Created: {new Date(repo.created_at).toLocaleDateString()}</p>
-        <p>Last updated: {new Date(repo.updated_at).toLocaleDateString()}</p>
-      </div>
-
-      <a
-        href={repo.html_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="external"
-      >
-        View on GitHub
-      </a>
-
-      <h3>Recent Commits</h3>
-      <ul className="commit-list">
-        {commits.length > 0 ? (
-          commits.map((commit) => (
-            <li key={commit.sha}>
-              <p className="commit-message">{commit.commit.message}</p>
-              <p className="commit-author">
-                By {commit.author?.login || commit.commit.author.name}
-              </p>
-              <p className="commit-date">
-                {new Date(commit.commit.author.date).toLocaleString()}
-              </p>
-            </li>
-          ))
-        ) : (
-          <p>No commits found</p>
-        )}
+      <h2 className="section-heading">Last 5 Commits for {repoName}</h2>
+      <ul>
+        {commits.map((commit, index) => (
+          <li key={index} className="repo-card">
+            <strong>Message:</strong> {commit.commit.message}
+            <br />
+            <strong>Author:</strong> {commit.commit.author.name}
+            <br />
+            <strong>Date:</strong>{" "}
+            {new Date(commit.commit.author.date).toLocaleString()}
+          </li>
+        ))}
       </ul>
     </div>
   );
